@@ -1,0 +1,25 @@
+.modal{
+    z-index: 1050; 
+    max-width: 100%;
+    margin: 0 auto; 
+    top: 120px;
+    left: 30%; /* Ajusta el valor del margen izquierdo según tus necesidades */
+    right: 20%;
+    position: fixed;
+    overflow-y: auto; 
+    background-color: aqua;
+    height: 300px;
+  }
+  .cerrar{
+    background-color: white;
+    width: 30px;
+    height: 30px;
+    position: right;
+    margin-left: 90%;
+    margin-top: 1%;
+  }
+  h1{
+    margin-left: 40%;
+  }
+
+  

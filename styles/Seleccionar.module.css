@@ -1,0 +1,58 @@
+.papa {
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+    width: 100%;
+    max-height: 100%;
+    overflow-x: auto;
+    white-space: nowrap; 
+    margin:10px;
+    text-align: center;
+    background: #F28705;
+  }
+  
+  .container {
+      margin: 10px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); 
+      gap: 10px; 
+    }
+    .card {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .boton{
+      position: fixed;
+      top: 80%; 
+      right: 10%;
+      background: none;
+      width: 150px;
+      height: 40px;
+      border-radius: 15px;
+      border: 5px solid #FFF;
+      font-size: 20px;
+      color:white;
+      cursor: pointer;
+  }
+  .boton:hover{
+      background:white;
+      color: #F28705;
+      border: 5px solid #F28705;
+  }
+    
+    @media (max-width: 768px) {
+      .container {
+        grid-template-columns: repeat(2, 1fr); 
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .container {
+        grid-template-columns: repeat(1, 1fr); 
+      }
+    }
+  
+
+    
