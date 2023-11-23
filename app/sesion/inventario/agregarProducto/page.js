@@ -14,7 +14,7 @@ export default function Home() {
 
   return (
     <section className={styles.section}>
-      {/* Agregar la informacion real de la BD y revisar codigo */}
+      {/* Agregar un mapeado que permita visualizar la imagenes desde la base de datos */}
       <div className={styles.producto}>
         <div className={styles.imageContainer}>
           <label htmlFor="imagen" className={styles.label}>
@@ -35,6 +35,12 @@ export default function Home() {
           )}
         </div>
         <form id="caractProducto" className={styles.caractProducto}>
+        <div className={styles.inputContainer}>
+            <label htmlFor="nombre" className={styles.label}>
+              Identificador:
+            </label>
+            <input type="text" placeholder="Nombre" />
+          </div>
           <div className={styles.inputContainer}>
             <label htmlFor="nombre" className={styles.label}>
               Nombre:
