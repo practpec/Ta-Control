@@ -1,6 +1,5 @@
 "use client"
 import "@/Styles/Navbar.css"
-import Link from "next/link";
 import Image from "next/image";
 import cerrar from "@/img/cerrar.png"
 import papalera from "@/img/trash.png"
@@ -9,6 +8,7 @@ import logo from "@/img/logo.png"
 import pedido from "@/img/pedido.png"
 import inventario from "@/img/inventario.png"
 import reporte from "@/img/reporte.png";
+import Link from "next/link";
 export default function Navbar() {
 
     return(
@@ -34,9 +34,10 @@ export default function Navbar() {
           <p>Reporte de ventas</p></div>
       </Link>
     </div>
+    <Link href="/">
       <button className="cerrar">
       <Image src={cerrar} className="imagen"/>
-      </button>
+      </button></Link>
       <button className="papelera">
       <Image src={papalera} className="imagen"/>
       </button>
