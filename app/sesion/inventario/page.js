@@ -59,6 +59,7 @@ export default function Home() {
     <div className={styles.papa}>
       <h1>Selecciona una categoría:</h1>
       <select
+        id={styles.selectA}
         value={categoriaSeleccionada}
         onChange={(e) => setCategoriaSeleccionada(e.target.value)}
       >

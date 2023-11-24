@@ -1,11 +1,40 @@
 "use client"
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from '@/Styles/agregarProducto.module.css';
 import Link from 'next/link';
+import axios from "axios";
+import Swal from 'sweetalert2'
 
 export default function Home() {
   const [selectedImage, setSelectedImage] = useState(null);
+  const[imagen, setImagen] = useState(null);
+  const[tipo, setTipo] =useState({
+    id:"",
+    nombre:"",
+    stock:"",
+    precio:""
+  });
+  const handleSumbit = async(e) =>{
+    e.preventDefault();
+    if(!imagen.id || !tipo.nombre || !tipo.stock || !tipo.precio || !imagen){
+    Swal.fire({
+      icon: "error",
+      title: "Error",
+      text: "Faltan campos por llenar"
+    });  
+  } else{
+    await axios.post("http://localhost:80/v1/videos", formData, {withCredentials: true})
+    Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Se agrego correctamente",
+        showConfirmButton: false,
+        timer: 1500
+      });
+}
+
+  
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -34,7 +63,8 @@ export default function Home() {
             />
           )}
         </div>
-        <form id="caractProducto" className={styles.caractProducto}>
+        <form onSubmit={handleSumbit}
+        id="caractProducto" className={styles.caractProducto}>
         <div className={styles.inputContainer}>
             <label htmlFor="nombre" className={styles.label}>
               Identificador:
@@ -66,4 +96,5 @@ export default function Home() {
       </Link>
     </section>
   );
+}
 }
