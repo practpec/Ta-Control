@@ -41,6 +41,7 @@ export default function Home() {
     setSelectedImage(file);
   };
 
+
   return (
     <section className={styles.section}>
       {/* Agregar un mapeado que permita visualizar la imagenes desde la base de datos */}
@@ -63,7 +64,7 @@ export default function Home() {
             />
           )}
         </div>
-        <form onSubmit={handleSumbit}
+        <form onChange={handleSumbit} 
         id="caractProducto" className={styles.caractProducto}>
         <div className={styles.inputContainer}>
             <label htmlFor="nombre" className={styles.label}>
