@@ -9,15 +9,16 @@ import pedido from "@/img/pedido.png"
 import inventario from "@/img/inventario.png"
 import reporte from "@/img/reporte.png";
 import Link from "next/link";
+import style from "@/styles/Navbar.module.css"
 export default function Navbar() {
 
     return(
     < >
-      <div className="logo">
-      <Image src={logo} className="logo2"/>
+      <div className={style.logo}>
+      <Image src={logo} className={style.logo2}/>
         Ta-Control
       </div>
-      <div className="boton">
+      <div className={style.boton}>
       <Link href="/sesion/pedidos">
         <div className="enlace">
           <Image src={pedido} alt="Pedidos" className="comp" width={100} height={100} />

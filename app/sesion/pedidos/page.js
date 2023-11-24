@@ -13,6 +13,8 @@ export default function Home() {
   useEffect(() => {
     localStorage.removeItem('idPedido');
     localStorage.removeItem('idMesas');
+    localStorage.removeItem('comparar');
+    localStorage.removeItem('detalle');
 
     fetch('http://localhost:3006/pedidos/')
       .then((response) => response.json())

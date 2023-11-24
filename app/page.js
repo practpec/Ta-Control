@@ -2,9 +2,9 @@
 import { useState } from "react";
 import axios from "axios";
 import Image from "next/image";
-import "../Styles/Login.css";
 import logol from "../img/logol.png";
 import { useRouter } from 'next/navigation'; 
+import style from "@/styles/Login.module.css"
 
 export default function Home() {
   const router = useRouter();
@@ -66,16 +66,18 @@ export default function Home() {
   };
 
   return (
-    <div className="container">
-      <div className="naranja">
-        <Image className="imagenlogo" src={logol} width={350} height={350}></Image>
+    <div className={style.container}>
+      <div className={style.naranja}>
+        <Image className={style.imagenlogo} src={logol} width={350} height={350}></Image>
       </div>
 
-      <div className="blanco">
-        <form onSubmit={handleLogin}>
-          <h1 className="arriba">Iniciar Sesión</h1>
+      <div className={style.blanco}>
+        <form onSubmit={handleLogin}
+        className={style.form}>
+          <h1 className={style.arriba}>Iniciar Sesión</h1>
           <input
             type="text"
+            className={style.input}
             placeholder="Correo Electrónico"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -83,10 +85,11 @@ export default function Home() {
           <input
             type="password"
             placeholder="Contraseña"
+            className={style.input}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button type="submit">Entrar</button>
+          <button className={style.button} type="submit">Entrar</button>
 
           {errors.length > 0 && (
             <div className="error-container">

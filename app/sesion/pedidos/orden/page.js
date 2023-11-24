@@ -13,6 +13,8 @@ function Pedido() {
     const storedIdMesas = localStorage.getItem('idMesas');
     const storedDetalles = JSON.parse(localStorage.getItem('detalle')) || [];
     const storedProductosNombres = JSON.parse(localStorage.getItem('comparar')) || {};
+    const storedIdPedido = localStorage.getItem('idPedido');
+
     const storedExtrasNombres = {
       10: "Queso",
       11: "Aguacate",
@@ -48,8 +50,6 @@ function Pedido() {
         idMesas: idMesas,
         detalle: detallesPedido,
       };
-
-      // Realiza la solicitud POST a la API
       const response = await fetch('http://localhost:3006/pedidos/', {
         method: 'POST',
         headers: {
@@ -59,7 +59,6 @@ function Pedido() {
       });
 
       if (response.ok) {
-        // Si la solicitud fue exitosa, elimina el detalle del localStorage
         localStorage.removeItem('detalle');
         console.log('Pedido enviado correctamente.');
       } else {
@@ -69,6 +68,16 @@ function Pedido() {
       console.error('Error al enviar el pedido:', error);
     }
   };
+  const handlePagarClick = () => {
+    fetch(`http://localhost:3006/pedidos/${idPedido}`)
+      .then(response => {
+        console.log('Respuesta de la API:', response);
+      })
+      .catch(error => {
+        console.error('Error al llamar a la API:', error);
+      });
+  };
+
 
   const renderDetalles = () => {
     return detalles.map((detalle, index) => (
@@ -116,8 +125,7 @@ function Pedido() {
               id="btnAgregar"
               className={styles.btnAgregar}
               onClick={() => {
-                enviarPedido(); // Llama a la función al hacer clic en "Agregar"
-                // También puedes realizar otras acciones relacionadas con "Agregar" aquí
+                enviarPedido(); 
               }}
             >
               Agregar
@@ -128,8 +136,8 @@ function Pedido() {
         <button id="btnCancelar" className={styles.btnCancelar}>
           <Link href="/pedidosTotales">Cancelar</Link>
         </button>
-        <button id="btnPagar" className={styles.btnPagar}>
-          <Link href="/pagar">Pagar</Link>
+        <button id="btnPagar" className={styles.btnPagar} onClick={handlePagarClick}>
+          <Link href="/sesion/pedidos/">Pagar</Link>
         </button>
       </div>
     </section>
