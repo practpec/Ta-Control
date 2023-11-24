@@ -1,0 +1,160 @@
+.container{
+    display: flex;
+    width: 100%;
+    height: 80%;
+    margin-left: 40%;
+    font-family: Arial, Helvetica, sans-serif;
+    justify-content: space-between; 
+    align-items: flex-start; 
+    align-content: center;
+    flex-direction: row;
+    margin-left: auto;
+}
+
+.abajo{
+    display: flex;
+    justify-content: space-between;
+    font-weight: 500;
+    margin-top: 15%;
+    margin-left: auto;
+    margin-right: 5%;
+    margin-bottom: 3%;
+}
+.arriba{
+    display: flex;
+    width: 80%;
+    justify-content: space-between;
+    font-weight: 500;
+    margin-left: auto;
+    margin-right: 10%;
+}
+.arriba button, .arriba select{
+    display: flex;
+    border: 3px solid white;
+    background-color: white;
+    justify-content: center;
+    color: black;
+    font-weight: 600;
+    border-radius: 8px;
+    margin-top: 5%;
+    width: 40%;
+    padding: 2%;
+    font-size: large;
+}
+
+#btnAgregar{
+    display: flex;
+    border: 3px solid white;
+    background-color: transparent;
+    color: white;
+    border-radius: 8px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    margin-top: auto;
+    font-size: large;
+    font-weight: 700;
+}
+#btnAgregar:hover{
+    background-color: white;
+    color: #f28705;
+    font-weight: 700;
+}
+
+#pedido-container{
+    display: flex;
+    flex-direction: column;
+    margin-top: 2%;
+    color: #160101;
+    font-size: medium;
+    text-align: center;
+    font-weight: 600;
+
+}
+.pedidoOpc{
+    display: flex;
+    width: 25%;
+    height: auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    margin-left: 30%;
+    margin-right: 10%;
+    flex: 1;
+    float: left;
+}
+.pedidoOpc h2{
+    display: flex;
+    color: white;
+}
+.pedido{
+    height: auto;
+    background-color: #f28705;
+    width: 100%; 
+    margin-left: 5%; 
+    float: right;
+    border-radius: 5px;
+}
+
+#opcTacos, #opcQuesadillas,#opcRefrescos{
+    display: flex;
+    background-color:#520500 ;
+    justify-content: center;
+    display: inline-block; 
+    padding: 5%;
+    border-radius: 10%; 
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2); 
+    text-decoration: none;
+    margin:10px;
+    align-content: center;
+}
+
+#opcTacos img, #opcQuesadillas img,#opcRefrescos img{
+    width: 150px;
+    height: auto;
+    
+}
+#btnCancelar{
+    display: flex;
+    margin-top: auto;
+    border: 3px solid #D90404;
+    background-color:#D90404;
+    width: 50%;
+    justify-content: center;
+    border-radius: 8px;
+    padding: 4px;
+    font-size: large;
+    margin-right: 3%;
+    text-decoration: none;
+    margin-top: 3%;
+}
+#btnPagar {
+    display: flex;
+    margin-top: auto;
+    border: 3px solid #520500;
+    background-color: #520500;
+    width: 50%;
+    justify-content: center;
+    border-radius: 8px;
+    padding: 4px;
+    font-size: large;
+    margin-right: 3%;
+    text-decoration: none;
+    margin-top: 3%;
+}
+
+.pB{
+    margin-left: 20%;
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    margin-right: 10%;
+    height: auto;
+    align-items: center;
+    gap: 5%;
+}
+
+
+

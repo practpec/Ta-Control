@@ -1,78 +1,92 @@
-.login{
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lakki+Reddy&family=Lexend:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lakki+Reddy&family=Lexend:wght@400;700&display=swap');
+.container {
+    font-family: 'Inter';
     display: flex;
-    width: 100%;
+    flex-wrap: wrap;
+    padding: 0 0 0 0;
     height: 100%;
-    margin: none;
+    max-width: 100%;
+    max-height: 100%;
 }
-
-.logo{
-    width: 100%;
-    height: auto;
-}
-.logo img{
+.blanco{
+    max-width: 50%;
+    flex: 50%;
+    max-height: 100%;
+    color:black;
     display: flex;
-    margin-top: 10%;
-    margin-left: 10%;
-    width: 60%;
     justify-content: center;
+    align-items: center;
     align-content: center;
-}
-
-.mitad{
-    top:0;
-    right: 0;
-    width: 100%;
-    height: 100vh;
-    align-items:center;
-    background-color: white;
-    display: flex;
-    justify-content: center;
-}
-
-form{
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-content: center;
+
+}
+.imagenlogo{
+    margin-top: 12%;
+    margin-left: 20%;
+}
+.logologin{
+    margin-top: 20%;
+    margin-left: 50%;
+    max-width: 50%;
     width: 50%;
-    height: 40%;
-    font-family: Arial, Helvetica, sans-serif;
-    margin: 3%;
-    padding: 3%;
-    gap:3%;
+    height: relative;
 }
 
-h1{
-    text-align: center;
+.naranja {
+    max-height: 100%;
+    height: 100%;
+    flex: 50%;
+    background: #F28705;
+    margin: 0; 
+    padding: 0;
 }
-
-label{
-    font-weight: 600;
+form{
+    margin-top: 20%;
+    margin-left: 25%;
+    margin-right: 20%;
+    width: 50%;
+    max-width: 50%;
+    max-height: 60%;
+    height: 60%;
+    margin: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 15px;
+    border: 3px solid #CDD0BF;
+    font-family: Lexend;
+    font-size: 15px;
+    font-style: normal;
+    line-height: normal;
 }
 input{
-    border-color: 2px solid #cccfc1;  
-}
-input:focus{
-    border-color: 2px solid #cccfc1;
-}
+    font-family: Lexend;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 10px;
+    left: 50%;
+    background-color: none;
+    font-style: normal;
+    font-weight: 200;
+    font-size: 15px;
+    line-height: 30px;
 
+    border: 3px solid #CDD0BF;
+    background: rgba(255, 255, 255, 0.30);
+}
 button{
-    display: flex;
-    width: 60%;
-    background-color: white;
-    border-radius: 5px;
-    border: 3px solid #f28705;
-    justify-content: center;
-    color:#f28705;
-    margin-top: 3%;
-    padding: .5%;
-    font-size: large;
-    font-weight:500;
-    align-self: center;
-}
-
-button:hover{
-    color: white;
-    background-color: #f28705;
+    width: 75%;
+    max-width: 40%;
+    height: 30px;
+    max-height: 30px;
+    border-radius: 15px;
+    border: 5px solid #F28705;
+    font-style: normal;
+    font-size: 15px;
+    color: #F28705;
 }

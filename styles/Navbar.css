@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Lakki+Reddy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap" rel="stylesheet"');
+.logo{
+  color: #160101;
+  font-family: Lakki Reddy;
+  font-size: 25px;
+  background: none;
+  max-width: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-top: -50px;
+}
+.logo2{
+  width: 200px;
+  height: 240px;
+  margin-left:-20px;
+  margin-right: -50px;
+}
+
+.boton {
+  text-align: center; 
+  margin-top: -50px;
+  margin-bottom: 70px;
+  text-decoration: none !important;
+}
+
+.enlace { 
+  text-decoration: none !important;
+  display: flex; 
+  align-items: center;
+  margin-bottom: 5px; 
+  color: black;
+  justify-content: left !important;
+
+}
+.enlace:hover {
+  background: rgba(242, 135, 5, 0.70);
+  color:black;
+}
+.enlace p {
+  margin: 0; 
+  margin-left: 10px; 
+  
+}
+
+  .imagen{
+    margin-left: 15%;
+    margin-right: 10px;
+  }
+  .cerrar{
+    cursor: pointer;
+    background: none;
+    margin-left: 10%;
+    border: 0;
+  }
+  a{
+    text-decoration: none;
+  }
+  
+  .papelera{
+    cursor: pointer;
+    background: none;
+    margin-left: 10%;
+    border: 0;
+  }
+  .ayuda{
+    cursor: pointer;
+    background: none;
+    margin-left: 10%;
+    border: 0;
+  }
