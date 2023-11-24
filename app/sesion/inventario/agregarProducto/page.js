@@ -49,7 +49,7 @@ export default function Home() {
           </div>
           <div className={styles.inputContainer}>
             <label htmlFor="cantidad" className={styles.label}>
-              Cantidad:
+              Stock:
             </label>
             <input type="text" placeholder="Cantidad" />
           </div>

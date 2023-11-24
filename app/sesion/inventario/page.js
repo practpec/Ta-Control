@@ -68,7 +68,7 @@ export default function Home() {
       </select>
 
       <div className={styles.container}>
-  {productos.map((producto) => {
+        {productos.map((producto) => {
     const isBebida = producto.tipo === "Bebida" && categoriaSeleccionada === "Bebidas";
     const isTaco = producto.tipo === "Tacos" && categoriaSeleccionada === "Tacos";
     const isQuesadilla = producto.tipo === "Quesadilla" && categoriaSeleccionada === "Quesadillas";
