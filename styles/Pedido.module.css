@@ -15,7 +15,7 @@
     display: flex;
     justify-content: space-between;
     font-weight: 500;
-    margin-top: 15%;
+    margin-top: 5%;
     margin-left: auto;
     margin-right: 5%;
     margin-bottom: 3%;
@@ -89,14 +89,17 @@
     display: flex;
     color: white;
 }
-.pedido{
+.pedido {
     height: auto;
     background-color: #f28705;
-    width: 100%; 
-    margin-left: 5%; 
+    width: 100%;
+    margin-left: 5%;
     float: right;
     border-radius: 5px;
-}
+    max-height: 20%;
+   
+  }
+  
 
 #opcTacos, #opcQuesadillas,#opcRefrescos{
     display: flex;
@@ -154,6 +157,16 @@
     height: auto;
     align-items: center;
     gap: 5%;
+}
+.pedidoContainer{
+    max-width: 90%;
+    width: 90%;
+    margin-left: 5%;
+    max-height: 290px;;
+    overflow: auto; 
+}
+.agregar{
+    color:#D90404;
 }
 
 

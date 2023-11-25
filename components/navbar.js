@@ -15,7 +15,7 @@ export default function Navbar() {
     return(
     < >
       <div className={style.logo}>
-      <Image src={logo} className={style.logo2}/>
+      <Image alt='Logo' src={logo} className={style.logo2}/>
         Ta-Control
       </div>
       <div className={style.boton}>
@@ -37,13 +37,13 @@ export default function Navbar() {
     </div>
     <Link href="/">
       <button className="cerrar">
-      <Image src={cerrar} className="imagen"/>
+      <Image alt='Cerrar' src={cerrar} className="imagen"/>
       </button></Link>
       <button className="papelera">
-      <Image src={papalera} className="imagen"/>
+      <Image alt='papelera' src={papalera} className="imagen"/>
       </button>
       <button className="ayuda">
-      <Image src={ayuda} className="imagen"/>
+      <Image alt='Ayuda' src={ayuda} className="imagen"/>
       </button>
   </>
     )

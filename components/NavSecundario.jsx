@@ -11,13 +11,13 @@ export default function NavbarSec(){
            
                 Orden</Link>
             <Link href='/sesion/pedidos/orden/tacos/'className={style.card}> 
-            <Image src={Taco} width={100} height={100}></Image>
+            <Image alt='Tacos' src={Taco} width={100} height={100}></Image>
                 Tacos</Link>
             <Link href='/sesion/pedidos/orden/quesadillas/'className={style.card}>
-            <Image src={Quesadilla} width={100} height={100}></Image>
+            <Image alt='Quesadillas' src={Quesadilla} width={100} height={100}></Image>
                 Quesadillas</Link>
             <Link href='/sesion/pedidos/orden/refrescos/'className={style.card}>
-            <Image src={Refresco} width={100} height={100}></Image>
+            <Image alt='Refrescos' src={Refresco} width={100} height={100}></Image>
                 Refrescos</Link>
         </>
     );
