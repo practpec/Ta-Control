@@ -58,7 +58,7 @@ export default function Home() {
             src={producto.imagen}
               alt="Imagen seleccionada"
               className={styles.selectedImage}
-              width = {800} height={800}/>
+              width = {100} height={100}/>
         </div>
         <form onSubmit={handleSubmit} id="caractProducto" className={styles.caractProducto}>
           <div className={styles.inputContainer}>
@@ -84,7 +84,7 @@ export default function Home() {
           </div>
         </form>
       </div>
-      <Link href="/sesion/inventario/producto/">
+      <Link href={`/sesion/inventario/producto/ ${producto.idProducto}`}>
         <button className={styles.button}>Cancelar</button>
       </Link>
       <Link href="/sesion/inventario">

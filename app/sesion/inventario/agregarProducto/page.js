@@ -6,16 +6,18 @@ import Link from 'next/link';
 
 export default function Home() {
   const [selectedImage, setSelectedImage] = useState(null);
+  const [categoriaSeleccionada, setCategoriaSeleccionada] = useState("Bebidas");
   // const[imagen, setImagen] = useState(null);
-  const[tipo, setTipo] =useState({
+  const[producto, setProducto] =useState({
     id: null,
     nombre:"",
     stock: null,
     precio:null
   });
+
   const handleSumbit = async(e) =>{
     e.preventDefault();
-    if(!tipo.id || !tipo.nombre || !tipo.stock || !tipo.precio || !selectedImage){
+    if(!producto.id || !producto.nombre || !producto.stock || !producto.precio || !selectedImage){
     Swal.fire({
       icon: "error",
       title: "Error",
@@ -76,6 +78,18 @@ export default function Home() {
               Nombre:
             </label>
             <input type="text" placeholder="Nombre" />
+          </div>
+          <div className={styles.inputContainer}>
+            <div className={styles.papa}>
+            <h1>Selecciona una categoría:</h1>
+              <select
+                value={categoriaSeleccionada}
+                onChange={(e) => setCategoriaSeleccionada(e.target.value)}>
+                  <option value="Bebidas">Refrescos</option>
+                  <option value="Tacos">Tacos</option>
+                  <option value="Quesadillas">Quesadillas</option>
+              </select>
+            </div>
           </div>
           <div className={styles.inputContainer}>
             <label htmlFor="cantidad" className={styles.label}>

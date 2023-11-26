@@ -30,7 +30,7 @@ useEffect(() => {
 
 const deleteProducto = async(e) =>{
   e.preventDefult();
-  const res = await axios.delete("http://localhost:3006/productos");
+  const res = await axios.delete("http://localhost:3006/productos" + id,);
   if (res.status == 200) {
     alert("Producto eliminado, disponible en papelera");
 } else {
