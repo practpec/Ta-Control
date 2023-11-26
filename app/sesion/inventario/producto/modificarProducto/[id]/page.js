@@ -27,7 +27,7 @@ export default function Home() {
     };
      
     getProducto
-  }, []);
+  }, [id]);
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -54,11 +54,11 @@ export default function Home() {
           <label htmlFor="imagen" className={styles.label}>
             Imagen:
           </label>
-            <Image
-            src={producto.imagen}
+            <Image src={producto.imagen}
               alt="Imagen seleccionada"
               className={styles.selectedImage}
-              width = {100} height={100}/>
+              width = {100} 
+              height={100}/>
         </div>
         <form onSubmit={handleSubmit} id="caractProducto" className={styles.caractProducto}>
           <div className={styles.inputContainer}>

@@ -74,22 +74,22 @@ export default function Home() {
     const isQuesadilla = producto.tipo === "Quesadilla" && categoriaSeleccionada === "Quesadillas";
 
     if (isBebida || isTaco || isQuesadilla) {
-      // return (
+      return (
         <Link
-          key={productos.idProducto}
+          key={producto.idProducto}
           href={`/sesion/inventario/producto/${producto.idProducto}`}
         >
           <div className={styles.card}>
             <Image
-              src={productos.imagen}
+              src={producto.imagen}
               alt="imagen"
               width={100}
               height={100}
             />
-            {productos.nombre}
+            {producto.nombre}
           </div>
         </Link>
-      // );
+      );
     }
     return null;
   })}

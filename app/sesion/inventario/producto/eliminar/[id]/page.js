@@ -68,11 +68,11 @@ export default function Eliminar(){
           </div>
           <div className={style.inputContainer}>
             <label htmlFor="cantidad" className={style.label}>
-              {producto.stock}
+              stock
             </label>
             {/*tu logica para que solo aplique esto para los que sean bebida*/}
             <label htmlFor="cantidad" className={style.label}>
-              3
+            {producto.stock}
             </label>
            
           </div>
@@ -81,7 +81,7 @@ export default function Eliminar(){
               Precio:
             </label>
             <label htmlFor="precio" className={styles.label}>
-              ${producto.precio}
+               $ {producto.precio}
             </label>
           </div>
         </form>
