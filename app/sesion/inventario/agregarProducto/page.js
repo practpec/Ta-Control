@@ -81,7 +81,9 @@ export default function Home() {
           </div>
           <div className={styles.inputContainer}>
             <div className={styles.papa}>
-            <h1>Selecciona una categoría:</h1>
+            <label htmlFor="nombre" className={styles.label}>
+              Tipo: 
+            </label>
               <select
                 value={categoriaSeleccionada}
                 onChange={(e) => setCategoriaSeleccionada(e.target.value)}>
