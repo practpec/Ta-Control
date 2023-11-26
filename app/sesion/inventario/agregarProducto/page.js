@@ -6,23 +6,23 @@ import Link from 'next/link';
 
 export default function Home() {
   const [selectedImage, setSelectedImage] = useState(null);
-  const[imagen, setImagen] = useState(null);
+  // const[imagen, setImagen] = useState(null);
   const[tipo, setTipo] =useState({
-    id:"",
+    id: null,
     nombre:"",
-    stock:"",
-    precio:""
+    stock: null,
+    precio:null
   });
   const handleSumbit = async(e) =>{
     e.preventDefault();
-    if(!imagen.id || !tipo.nombre || !tipo.stock || !tipo.precio || !imagen){
+    if(!tipo.id || !tipo.nombre || !tipo.stock || !tipo.precio || !selectedImage){
     Swal.fire({
       icon: "error",
       title: "Error",
       text: "Faltan campos por llenar"
     });  
   } else{
-    await axios.post("http://localhost:80/v1/videos", formData, {withCredentials: true})
+    await axios.post("http://localhost:3006/productos", formData,)
     Swal.fire({
         position: "center",
         icon: "success",
@@ -32,7 +32,7 @@ export default function Home() {
       });
 }
 
-  
+  };
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -56,12 +56,13 @@ export default function Home() {
           />
           {selectedImage && (
             <img
-              src={URL.createObjectURL(selectedImage)}
+              src={(selectedImage.toString().includes("https://res.cloudinary.com/")) ? 
+              selectedImage : URL.createObjectURL(selectedImage)}
               alt="Imagen seleccionada"
               className={styles.selectedImage}
             />
           )}
-        </div>
+
         <form onChange={handleSumbit} 
         id="caractProducto" className={styles.caractProducto}>
         <div className={styles.inputContainer}>
@@ -88,12 +89,12 @@ export default function Home() {
             </label>
             <input type="text" placeholder="Precio" />
           </div>
-        </form>
+          </form>
+        </div>
       </div>
       <Link href="/sesion/inventario">
         <button className={styles.button}>Confirmar</button>
       </Link>
     </section>
   );
-}
-}
+}  
