@@ -108,9 +108,9 @@ export default function Home() {
             <select name="tipo"
               value={categoriaSeleccionada}
               onChange={(e) => setCategoriaSeleccionada(e.target.value)}>
-                <option value="Bebidas">Refrescos</option>
+                <option value="Bebida">Refrescos</option>
                 <option value="Tacos">Tacos</option>
-                <option value="Quesadillas">Quesadillas</option>
+                <option value="Quesadilla">Quesadillas</option>
             </select>
           </div>
           <div className={styles.inputContainer}>
@@ -136,7 +136,7 @@ export default function Home() {
       </div>
       <Link href="/sesion/inventario">
         <button className={styles.button} 
-        // onClick={handleSumbit}
+        onClick={handleSumbit}
         >
           Confirmar</button>
       </Link>
