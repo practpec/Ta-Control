@@ -24,13 +24,11 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    color: black;
   }
   .boton{
-    position: fixed;
-    top: 80%; 
-    right: 10%;
     background: none;
-    width: 150px;
+    width: 40px;
     height: 40px;
     border-radius: 15px;
     border: 5px solid #FFF;
@@ -43,6 +41,7 @@
     color: #F28705;
     border: 5px solid #F28705;
 }
+
 #selectA{
   display: flex;
   border: 2px solid white;
@@ -52,6 +51,12 @@
 }
 #selectA:focus{
   border:none;
+}
+.tituloTabla{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
 }
   
   @media (max-width: 768px) {

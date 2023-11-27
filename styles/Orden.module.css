@@ -26,3 +26,12 @@
     margin: 0; 
     padding: 0;
 }
+.grande{
+    margin-top: 5%;
+    margin-left: 5%;
+    width: 90%;
+    height: 70%;
+    background: #F28705;
+    border-radius: 15px;
+
+}

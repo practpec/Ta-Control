@@ -1,0 +1,27 @@
+.container{
+    display: flex;
+    color: white;
+}
+.eliminar{
+    border: 2px solid red;
+    background-color: transparent;
+    color: red;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.eliminar:hover{
+    color: white;
+    background: red;
+}
+.recuperar{
+    margin-left: 3px;
+    border: 2px solid orange;
+    background-color: transparent;
+    color: orange;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.recuperar:hover{
+    color: white;
+    background: orange;
+}

@@ -1,6 +1,5 @@
 "use client"
 import "@/Styles/Navbar.css"
-import Link from "next/link";
 import Image from "next/image";
 import cerrar from "@/img/cerrar.png"
 import papalera from "@/img/trash.png"
@@ -9,15 +8,17 @@ import logo from "@/img/logo.png"
 import pedido from "@/img/pedido.png"
 import inventario from "@/img/inventario.png"
 import reporte from "@/img/reporte.png";
+import Link from "next/link";
+import style from "@/styles/Navbar.module.css"
 export default function Navbar() {
 
     return(
     < >
-      <div className="logo">
-      <Image src={logo} className="logo2"/>
+      <div className={style.logo}>
+      <Image alt='Logo' src={logo} className={style.logo2}/>
         Ta-Control
       </div>
-      <div className="boton">
+      <div className={style.boton}>
       <Link href="/sesion/pedidos">
         <div className="enlace">
           <Image src={pedido} alt="Pedidos" className="comp" width={100} height={100} />
@@ -34,15 +35,18 @@ export default function Navbar() {
           <p>Reporte de ventas</p></div>
       </Link>
     </div>
+    <Link href="/">
       <button className="cerrar">
-      <Image src={cerrar} className="imagen"/>
-      </button>
+      <Image alt='Cerrar' src={cerrar} className="imagen"/>
+      </button></Link>
+      <Link href='/sesion/papelera/'>
       <button className="papelera">
-      <Image src={papalera} className="imagen"/>
-      </button>
+      <Image alt='papelera' src={papalera} className="imagen"/>
+      </button></Link>
+      <Link href='/sesion/ayuda/'>
       <button className="ayuda">
-      <Image src={ayuda} className="imagen"/>
-      </button>
+      <Image alt='Ayuda' src={ayuda} className="imagen"/>
+      </button></Link>
   </>
     )
 }
