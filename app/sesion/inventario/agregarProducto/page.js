@@ -5,8 +5,6 @@ import Swal from'sweetalert2';
 import Image from 'next/image';
 import styles from '@/styles/agregarProducto.module.css';
 import Link from 'next/link';
-import axios from "axios";
-import Swal from 'sweetalert2'
 
 export default function Home() {
   const [selectedImage, setSelectedImage] = useState(null);
