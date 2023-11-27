@@ -17,16 +17,19 @@ export default function Home() {
   useEffect(() => {
     const getProducto = async () => {
       console.log(id);
-      const res = await axios.get("http://localhost:3006/productos" + id,);
+      const res = await axios.get("http://localhost:3006/productos/" + id,);
       console.log(res.data.data); 
 
       setProducto({
         nombre: res.data.data.nombre,
-        imagen: res.data.imagen
+        imagen: res.data.data.imagen,
+        precio: res.data.data.precio,
+        stock: res.data.data.stock
       })   
     };
      
-    getProducto
+    getProducto();
+    
   }, [id]);
 
   const handleChange = (e) => {
@@ -38,7 +41,8 @@ export default function Home() {
 };
 
   const handleSubmit = async (e)=> {
-    const response = await axios.patch("http://localhost:3006/productos" + id, producto);
+    const response = await axios.patch("http://localhost:3006/productos/producto/" + id, producto);
+    console.log(response);
     if(response.status === 200){
       alert("Se actualizó el producto correctamente");
     } else {
@@ -72,13 +76,13 @@ export default function Home() {
           {/*logica para que no aplique la cantidad para todos*/}
           <div className={styles.inputContainer}>
             <label htmlFor="cantidad" className={styles.label}>
-              Cantidad:
+              Cantidad: {" " + producto.stock}
             </label>
             <input name="stock" type="text" placeholder="Cantidad" onChange={handleChange}/>
           </div>
           <div className={styles.inputContainer}>
             <label htmlFor="precio" className={styles.label}>
-              Precio:
+              Precio: {" " + producto.precio}
             </label>
             <input name="precio" type="text" placeholder="Precio" onChange={handleChange}/>
           </div>
@@ -88,7 +92,7 @@ export default function Home() {
         <button className={styles.button}>Cancelar</button>
       </Link>
       <Link href="/sesion/inventario">
-        <button className={styles.button}>Confirmar</button>
+        <button className={styles.button} onClick={handleSubmit}>Confirmar</button>
       </Link>
     </section>
   );

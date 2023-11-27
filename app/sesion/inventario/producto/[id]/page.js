@@ -60,7 +60,9 @@ export default function Home() {
           <Image
             src={producto.imagen}
             alt="Imagen seleccionada"
-            className={styles.selectedImage} />
+            className={styles.selectedImage}
+            width={100}
+            height={100} />
         </div>
         <form id="caractProducto" className={styles.caractProducto}>
           <div className={styles.inputContainer}>
