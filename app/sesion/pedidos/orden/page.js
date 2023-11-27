@@ -42,11 +42,11 @@ function Pedido() {
     }
   }, []);
   
-
   const enviarPedido = async () => {
     try {
       const detallesPedido = JSON.parse(localStorage.getItem('detalle')) || [];
       const idMesas = localStorage.getItem('idMesas');
+      const storedIdPedido = localStorage.getItem('idPedido');
   
       if (!idMesas || detallesPedido.length === 0) {
         console.error('No hay datos suficientes para enviar el pedido.');
@@ -54,40 +54,46 @@ function Pedido() {
       }
   
       const pedidoData = {
-        idMesas: idMesas,
+        idPedido: storedIdPedido,  
         detalle: detallesPedido,
       };
   
-      const response = await fetch('http://localhost:3006/pedidos/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(pedidoData),
-      });
+
+      if (storedIdPedido) {
+        const response = await fetch('http://localhost:3006/detalles/', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(pedidoData),
+        });
   
-      if (response.ok) {
-        const responseData = await response.json();
-        const nuevoIdPedido = responseData.idPedido;
-  
-        console.log('Pedido enviado correctamente. Nuevo idPedido:', nuevoIdPedido);
-  
-        if (nuevoIdPedido) {
-          localStorage.setItem('idPedido', nuevoIdPedido);
-          const detallesResponse = await fetch(`http://localhost:3006/detalles/${nuevoIdPedido}`);
-          if (detallesResponse.ok) {
-            const detallesData = await detallesResponse.json();
-            console.log('Detalles obtenidos correctamente:', detallesData);
-            // Puedes hacer algo con los detalles obtenidos, si es necesario.
-          } else {
-            console.error('Error al obtener detalles:', detallesResponse.statusText);
-          }
+        if (response.ok) {
+          const responseData = await response.json();
+          console.log('Detalles agregados correctamente al pedido existente:', responseData);
         } else {
-          console.error('El nuevo idPedido no es válido.');
+          console.error('Error al agregar detalles al pedido existente:', response.statusText);
         }
-  
       } else {
-        console.error('Error al enviar el pedido:', response.statusText);
+        const nuevoPedidoResponse = await fetch('http://localhost:3006/pedidos/', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            idMesas: idMesas,
+            detalle: detallesPedido,
+          }),
+        });
+  
+        if (nuevoPedidoResponse.ok) {
+          const nuevoPedidoData = await nuevoPedidoResponse.json();
+          const nuevoIdPedido = nuevoPedidoData.idPedido;
+  
+          console.log('Pedido enviado correctamente. Nuevo idPedido:', nuevoIdPedido);
+        } else {
+          console.error('Error al enviar el nuevo pedido:', nuevoPedidoResponse.statusText);
+        }
       }
     } catch (error) {
       console.error('Error al enviar el pedido:', error);
