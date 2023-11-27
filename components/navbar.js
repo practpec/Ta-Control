@@ -39,12 +39,14 @@ export default function Navbar() {
       <button className="cerrar">
       <Image alt='Cerrar' src={cerrar} className="imagen"/>
       </button></Link>
+      <Link href='/sesion/papelera/'>
       <button className="papelera">
       <Image alt='papelera' src={papalera} className="imagen"/>
-      </button>
+      </button></Link>
+      <Link href='/sesion/ayuda/'>
       <button className="ayuda">
       <Image alt='Ayuda' src={ayuda} className="imagen"/>
-      </button>
+      </button></Link>
   </>
     )
 }
