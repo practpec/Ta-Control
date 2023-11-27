@@ -42,7 +42,7 @@
     font-size: large;
 }
 
-#btnAgregar{
+.btnAgregar{
     display: flex;
     border: 3px solid white;
     background-color: transparent;
@@ -50,7 +50,7 @@
     border-radius: 8px;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 20%;
     height: auto;
     margin-top: auto;
     font-size: large;
@@ -90,13 +90,13 @@
     color: white;
 }
 .pedido {
-    height: auto;
+    height: 450px;
     background-color: #f28705;
     width: 100%;
     margin-left: 5%;
     float: right;
     border-radius: 5px;
-    max-height: 20%;
+    max-height: 450px;
    
   }
   
@@ -119,7 +119,7 @@
     height: auto;
     
 }
-#btnCancelar{
+.btnCancelar{
     display: flex;
     margin-top: auto;
     border: 3px solid #D90404;
@@ -133,7 +133,7 @@
     text-decoration: none;
     margin-top: 3%;
 }
-#btnPagar {
+.btnPagar {
     display: flex;
     margin-top: auto;
     border: 3px solid #520500;
@@ -162,7 +162,7 @@
     max-width: 90%;
     width: 90%;
     margin-left: 5%;
-    max-height: 290px;;
+    max-height: 260px;;
     overflow: auto; 
 }
 .agregar{

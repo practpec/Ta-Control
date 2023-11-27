@@ -64,7 +64,7 @@ export default function Papelera() {
             <Image src={producto.imagen} alt={producto.nombre} width={100} height={100} />
             <p>{producto.tipo}</p>
             <p>{producto.nombre}</p>
-            <div className={style.container}>
+            <div className={style}>
               <button
                 className={style.eliminar}
                 onClick={() => opcionEliminar(producto.idProducto)}
