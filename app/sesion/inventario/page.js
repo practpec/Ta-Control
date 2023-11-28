@@ -57,7 +57,10 @@ export default function Home() {
 
   return (
     <div className={styles.papa}>
-      <h1>Selecciona una categoría:</h1>
+      <h1>Selecciona una categoría: 
+        <Link href={"/sesion/inventario/agregarProducto"}>
+        <button className={styles.boton}>+</button>
+      </Link></h1>
       <select
         value={categoriaSeleccionada}
         onChange={(e) => setCategoriaSeleccionada(e.target.value)}
@@ -70,7 +73,7 @@ export default function Home() {
       <div className={styles.container}>
         {productos.map((producto) => {
     const isBebida = producto.tipo === "Bebida" && categoriaSeleccionada === "Bebidas";
-    const isTaco = producto.tipo === "Tacos" && categoriaSeleccionada === "Tacos";
+    const isTaco = producto.tipo === "Taco" && categoriaSeleccionada === "Tacos";
     const isQuesadilla = producto.tipo === "Quesadilla" && categoriaSeleccionada === "Quesadillas";
 
     if (isBebida || isTaco || isQuesadilla) {
@@ -97,9 +100,7 @@ export default function Home() {
 
 
 
-      <Link href={"/sesion/inventario/agregarProducto"}>
-        <button className={styles.boton}>Agregar</button>
-      </Link>
+     
     </div>
   );
 }
