@@ -36,7 +36,7 @@ export default function Home() {
 
     const response = await axios.post("http://localhost:3006/productos", formData,);
 
-    if(response.status === 201){ //Imagino que en el metodo POST del controller, el status 201 es el que se retorna al tener exito 
+    if(response.status === 201){ 
       Swal.fire({
           position: "center",
           icon: "success",

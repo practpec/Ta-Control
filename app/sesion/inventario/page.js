@@ -47,9 +47,10 @@ export default function Home() {
       try {
         const response = await axios.get("http://localhost:3006/productos");
 
+        console.log(response.data.data)
         setProductos(response.data.data);
       } catch (error) {
-        console.error("Error al obtener productos:", error);
+        console.error(error);
       }
     };
     fetchData();
