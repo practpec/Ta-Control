@@ -1,70 +1,76 @@
 "use client"
-// require("dotnev");
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import styles from '@/Styles/modificarProducto.module.css';
 import Link from 'next/link';
 import Image from 'next/image';
-import axios from "axios";
+import axios from 'axios';
 
-export default function Home() {
+export default function ModificarProducto() {
   const id = useParams().id;
-  const [producto, setProducto] = useState({
-    precio:"",
-    stock:""
-  });
+  const [producto, setProducto] = useState({});
 
   useEffect(() => {
     const getProducto = async () => {
-      console.log(id);
-      const res = await axios.get("http://localhost:3006/productos/" + id,);
-      console.log(res.data.data); 
+      try {
+        const res = await axios.get(`http://localhost:4000/productos/${id}`);
+        const firstProduct = res.data.data[0] ?? {};
 
-      setProducto({
-        nombre: res.data.data.nombre,
-        imagen: res.data.data.imagen,
-        precio: res.data.data.precio,
-        stock: res.data.data.stock
-      })   
+        setProducto({
+          nombre: firstProduct.nombre,
+          imagen: firstProduct.imagen,
+          stock: firstProduct.stock,
+          precio: firstProduct.precio,
+        });
+      } catch (error) {
+        console.error('Error al obtener producto:', error.message || error);
+      }
     };
-     
-    getProducto();
-    
+
+    if (id) {
+      getProducto();
+    }
   }, [id]);
 
   const handleChange = (e) => {
-    e.preventDefault();
     setProducto({
-        ...producto,
-        [e.target.name]: e.target.value,
+      ...producto,
+      [e.target.name]: e.target.value,
     });
-};
+  };
 
-  const handleSubmit = async (e)=> {
-    const response = await axios.patch("http://localhost:3006/productos/producto/" + id, producto);
-    console.log(response);
-    if(response.status === 200){
-      alert("Se actualizó el producto correctamente");
-    } else {
-      alert("No se actualizó el producto correctamente")
+  const handleSubmit = async () => {
+    try {
+      const response = await axios.patch(`http://localhost:4000/productos/producto/${id}`, producto);
+      console.log(response);
+      if (response.status === 200) {
+        alert('Se actualizó el producto correctamente');
+        router.push(`/sesion/inventario/producto/${id}`);
+      } else {
+        alert('No se actualizó el producto correctamente');
+      }
+    } catch (error) {
+      console.error('Error al enviar la solicitud de actualización:', error.message || error);
+      alert('Error al actualizar el producto');
     }
-  }
+  };
 
   return (
     <section className={styles.section}>
-      {/* Agregar la informacion real de la BD y revisar codigo */}
       <div className={styles.producto}>
         <div className={styles.imageContainer}>
           <label htmlFor="imagen" className={styles.label}>
             Imagen:
           </label>
-            <Image src={producto.imagen}
-              alt="Imagen seleccionada"
-              className={styles.selectedImage}
-              width = {100} 
-              height={100}/>
+          <Image
+  src={producto?.imagen || ''}  
+  alt="Imagen seleccionada"
+  className={styles.selectedImage}
+  width={100}
+  height={100}
+/>
         </div>
-        <form onSubmit={handleSubmit} id="caractProducto" className={styles.caractProducto}>
+        <form id="caractProducto" className={styles.caractProducto}>
           <div className={styles.inputContainer}>
             <label htmlFor="nombre" className={styles.label}>
               Nombre:
@@ -73,27 +79,26 @@ export default function Home() {
               {producto.nombre}
             </label>
           </div>
-          {/*logica para que no aplique la cantidad para todos*/}
           <div className={styles.inputContainer}>
-            <label htmlFor="cantidad" className={styles.label}>
-              Cantidad: {" " + producto.stock}
+            <label htmlFor="stock" className={styles.label}>
+              Cantidad:
+              <input name="stock" type="text" placeholder="Cantidad" value={producto.stock} onChange={handleChange} />
             </label>
-            <input name="stock" type="text" placeholder="Cantidad" onChange={handleChange}/>
           </div>
           <div className={styles.inputContainer}>
             <label htmlFor="precio" className={styles.label}>
-              Precio: {" " + producto.precio}
+              Precio:
+              <input name="precio" type="text" placeholder="Precio" value={producto.precio} onChange={handleChange} />
             </label>
-            <input name="precio" type="text" placeholder="Precio" onChange={handleChange}/>
           </div>
         </form>
       </div>
-      <Link href={`/sesion/inventario/producto/ ${producto.idProducto}`}>
+      <Link href={`/sesion/inventario/producto/${id}`}>
         <button className={styles.button}>Cancelar</button>
       </Link>
-      <Link href="/sesion/inventario">
-        <button className={styles.button} onClick={handleSubmit}>Confirmar</button>
-      </Link>
+      <button className={styles.button} onClick={handleSubmit}>
+        Confirmar
+      </button>
     </section>
   );
 }

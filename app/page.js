@@ -35,7 +35,7 @@ export default function Home() {
     }
 
     try {
-      const response = await axios.post("http://localhost:3006/auth/login", {
+      const response = await axios.post("http://localhost:4000/auth/login", {
         email,
         password,
       });
@@ -45,7 +45,7 @@ export default function Home() {
         localStorage.setItem("token", response.data.token);
 
         const decodedToken = parseJwt(response.data.token);
-        const idUsuario = decodedToken.usuario.idUsuario;
+        const idUsuario = decodedToken.usuario.id;
         localStorage.setItem("idUsuario", idUsuario);
 
         console.log("Inicio de sesión exitoso");

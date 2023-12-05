@@ -8,7 +8,7 @@ export default function Papelera() {
   const [productos, setProductos] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3006/productos/deleted/')
+    fetch('http://localhost:4000/productos/deleted/')
       .then(response => response.json())
       .then(data => setProductos(data.data))
       .catch(error => console.error('Error fetching data:', error));
@@ -16,7 +16,7 @@ export default function Papelera() {
 
   const opcionEliminar = async (id) => {
     try {
-      const response = await fetch(`http://localhost:3006/productos/${id}`, {
+      const response = await fetch(`http://localhost:4000/productos/${id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -24,7 +24,7 @@ export default function Papelera() {
       });
 
       if (response.ok) {
-        setProductos(prevProductos => prevProductos.filter(producto => producto.idProducto !== id));
+        setProductos(prevProductos => prevProductos.filter(producto => producto.id !== id));
       } else {
         console.error('Error al eliminar el producto.');
       }
@@ -35,7 +35,7 @@ export default function Papelera() {
 
   const opcionRecuperar = async (id) => {
     try {
-      const response = await fetch(`http://localhost:3006/productos/${id}`, {
+      const response = await fetch(`http://localhost:4000/productos/${id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -44,7 +44,7 @@ export default function Papelera() {
 
       if (response.ok) {
         console.log('Producto recuperado con éxito.');
-        setProductos(prevProductos => prevProductos.filter(producto => producto.idProducto !== id));
+        setProductos(prevProductos => prevProductos.filter(producto => producto.id !== id));
       } else {
         console.error('Error al recuperar el producto.');
       }
@@ -67,13 +67,13 @@ export default function Papelera() {
             <div className={style}>
               <button
                 className={style.eliminar}
-                onClick={() => opcionEliminar(producto.idProducto)}
+                onClick={() => opcionEliminar(producto.id)}
               >
                 Eliminar
               </button>
               <button
                 className={style.recuperar}
-                onClick={() => opcionRecuperar(producto.idProducto)}
+                onClick={() => opcionRecuperar(producto.id)}
               >
                 Recuperar
               </button>

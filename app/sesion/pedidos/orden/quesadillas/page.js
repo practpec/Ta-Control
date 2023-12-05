@@ -12,13 +12,13 @@ export default function Home() {
   const [ambos, setAmbos] = useState(0);
 
   useEffect(() => {
-    fetch('http://localhost:3006/productos/')
+    fetch('http://localhost:4000/productos/')
       .then(response => response.json())
       .then(data => setProductos(data.data))
       .catch(error => console.error('Error fetching data:', error));
   }, []);
 
-  const tacos = productos.filter(producto => producto.tipo === 'Quesadilla');
+  const tacos = productos.filter(producto => producto.tipo === 'Quesadillas');
 
 const openModal = (product) => {
   setSelectedProduct(product);
@@ -40,7 +40,7 @@ const handleCantidadChange = (event) => {
 const handleAccept = () => {
   if (cantidad > 0) {
     const detallePrincipal = {
-      idProducto: selectedProduct.idProducto,
+      id_producto: selectedProduct.id,
       cantidad: cantidad,
       precio: selectedProduct.precio,
       extra: []
@@ -48,7 +48,7 @@ const handleAccept = () => {
 
     if (aguacate > 0) {
       detallePrincipal.extra.push({
-        idProducto: 10,
+        id_producto: 10,
         cantidad: aguacate,
         precio: 5
       });
@@ -56,7 +56,7 @@ const handleAccept = () => {
 
     if (queso > 0) {
       detallePrincipal.extra.push({
-        idProducto: 11,
+        id_producto: 11,
         cantidad: queso,
         precio: 5
       });
@@ -64,7 +64,7 @@ const handleAccept = () => {
 
     if (ambos > 0) {
       detallePrincipal.extra.push({
-        idProducto: 12,
+        id_producto: 12,
         cantidad: ambos,
         precio: 8
       });
@@ -76,10 +76,10 @@ const handleAccept = () => {
     console.log('Detalle Principal:', detallePrincipal);
 
     const compararExistente = JSON.parse(localStorage.getItem('comparar')) || {};
-    if (!compararExistente[selectedProduct.idProducto]) {
+    if (!compararExistente[selectedProduct.id]) {
       const nuevosComparar = {
         ...compararExistente,
-        [selectedProduct.idProducto]: selectedProduct.nombre
+        [selectedProduct.id]: selectedProduct.nombre
       };
       localStorage.setItem('comparar', JSON.stringify(nuevosComparar));
     }
@@ -92,10 +92,10 @@ const handleAccept = () => {
 
 return (
   <div className={styles.papa}>
-    <h1>Quesadillas</h1>
+    <h1>Tacos</h1>
     <div className={styles.container}>
       {tacos.map(taco => (
-        <div key={taco.idProducto} className={styles.card} onClick={() => openModal(taco)}>
+        <div key={taco.id} className={styles.card} onClick={() => openModal(taco)}>
           <Image src={taco.imagen} alt={taco.nombre} width={100} height={100} />
           <p>{taco.nombre}</p>
         </div>
@@ -122,7 +122,7 @@ return (
                   value={cantidad}
                   onChange={handleCantidadChange}
                 />
-                {selectedProduct.tipo === 'Taco' && (
+                {selectedProduct.tipo === 'Quesadillas' && (
                   <>
                     <label htmlFor="aguacate">Aguacate</label>
                     <input

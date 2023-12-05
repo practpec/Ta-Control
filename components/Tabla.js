@@ -9,7 +9,7 @@ const Tabla = () => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch(`http://localhost:3006/detalles/?page=1&limit=10&sortField=idProducto&sortOrder=desc`);
+      const response = await fetch(`http://localhost:4000/detalles/?page=1&limit=10&sortField=id_producto&sortOrder=desc`);
       const data = await response.json();
       console.log('Data from API:', data);
       setReporte(data.data);
@@ -20,43 +20,19 @@ const Tabla = () => {
 
   const handlePusherData = (data) => {
     console.log('Data from Pusher:', data);
-  
-    // Asegúrate de acceder a data.data para obtener el array real
-    const dataArray = data.data || [];
-  
-    setReporte(prevReporte => {
-      const updatedReporte = prevReporte.map(item => {
-        const matchingData = dataArray.find(d => d.idProducto === item.idProducto);
-  
-        if (matchingData) {
-          console.log(`Updating item with idProducto ${item.idProducto}`);
-          return {
-            ...item,
-            cant: parseInt(matchingData.cant, 10), // Utiliza la cantidad acumulada directamente
-            total: parseInt(matchingData.total, 10)
-          };
-        }
-        return item;
+
+    if (data && data.data) {
+      const dataArray = data.data;
+
+      setReporte((prevReporte) => {
+        // Actualizar el estado directamente con los nuevos datos
+        return dataArray;
       });
-  
-      dataArray.forEach(dataItem => {
-        if (!prevReporte.some(item => item.idProducto === dataItem.idProducto)) {
-          console.log(`Adding new item with idProducto ${dataItem.idProducto}`);
-          updatedReporte.push({
-            idProducto: dataItem.idProducto,
-            nombre: dataItem.nombre,
-            cant: parseInt(dataItem.cant, 10),
-            total: parseInt(dataItem.total, 10)
-          });
-        }
-      });
-  
-      console.log('Updated Reporte:', updatedReporte);
-  
-      return updatedReporte;
-    });
+    } else {
+      console.error('Invalid data received from Pusher:', data);
+    }
   };
-  
+
   useEffect(() => {
     fetchData();
 
@@ -68,7 +44,6 @@ const Tabla = () => {
     
     channel.bind('nuevo', handlePusherData);
 
-
     return () => {
       channel.unbind(); 
       pusher.unsubscribe('pedidos'); 
@@ -77,7 +52,6 @@ const Tabla = () => {
 
   return (
     <div className="contenedorpapa">
-      <button className='btn'> Diario</button>
       <button className='btn'> Semanal</button>
       <div className="tabla">
         <table className="mi-tabla">
@@ -91,10 +65,10 @@ const Tabla = () => {
           </thead>
           <tbody>
             {Array.isArray(reporte) && reporte.map(item => (
-              <tr key={item.idProducto}>
+              <tr key={item.id_producto}>
                 <td>{item.nombre}</td>
-                <td>${item.cant > 0 ? item.total / item.cant : 'N/A'}</td>
-                <td>{item.cant}</td>
+                <td>${item.cantidad > 0 ? item.total / item.cantidad : 'N/A'}</td>
+                <td>{item.cantidad}</td>
                 <td>${item.total}</td>
               </tr>
             ))}

@@ -16,7 +16,7 @@ export default function Home() {
     localStorage.removeItem('comparar');
     localStorage.removeItem('detalle');
 
-    fetch('http://localhost:3006/pedidos/')
+    fetch('http://localhost:4000/pedidos/')
       .then((response) => response.json())
       .then((data) => setPedidos(data.data))
       .catch((error) => console.error('Error fetching data:', error));
@@ -51,9 +51,9 @@ export default function Home() {
     closeModal();
   };
 
-  const handleCardClick = (idPedido, idMesa) => {
-    localStorage.setItem('idPedido', idPedido);
-    localStorage.setItem('idMesas', idMesa);
+  const handleCardClick = (id, tipo) => {
+    localStorage.setItem('idPedido', id);
+    localStorage.setItem('idMesas', tipo);
     router.push('/sesion/pedidos/orden/');
   };
 
@@ -63,14 +63,14 @@ export default function Home() {
         <h1>Mesas</h1>
         <div className={styles.container}>
           {pedidos
-            .filter((pedido) => pedido.idMesas.startsWith('Mesa'))
+            .filter((pedido) => pedido.tipo.startsWith('Mesa'))
             .map((pedido) => (
               <div
-                key={pedido.idPedido}
+                key={pedido.id}
                 className={styles.card}
-                onClick={() => handleCardClick(pedido.idPedido, pedido.idMesas)}
+                onClick={() => handleCardClick(pedido.id, pedido.tipo)}
               >
-                {pedido.idMesas}
+                {pedido.tipo}
               </div>
             ))}
         </div>
@@ -79,14 +79,14 @@ export default function Home() {
         <h1>Para Llevar</h1>
         <div className={styles.container}>
           {pedidos
-            .filter((pedido) => pedido.idMesas.startsWith('Para Llevar'))
+            .filter((pedido) => pedido.tipo.startsWith('Para Llevar'))
             .map((pedido) => (
               <div
                 key={pedido.idPedido}
                 className={styles.card}
-                onClick={() => handleCardClick(pedido.idPedido, pedido.idMesas)}
+                onClick={() => handleCardClick(pedido.id, pedido.tipo)}
               >
-                {pedido.idMesas}
+                {pedido.tipo}
               </div>
             ))}
         </div>

@@ -19,9 +19,9 @@ function Pedido() {
     const storedIdPedido = localStorage.getItem('idPedido');
     setIdPedido(storedIdPedido);
     const storedExtrasNombres = {
-      10: "Queso",
-      11: "Aguacate",
-      12: "Ambos"
+      9: "Queso",
+      10: "Aguacate",
+      11: "Ambos"
     };
 
     if (storedIdMesas) {
@@ -54,13 +54,13 @@ function Pedido() {
       }
   
       const pedidoData = {
-        idPedido: storedIdPedido,  
+        id_pedido: storedIdPedido,  
         detalle: detallesPedido,
       };
   
 
       if (storedIdPedido) {
-        const response = await fetch('http://localhost:3006/detalles/', {
+        const response = await fetch('http://localhost:4000/detalles/', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -75,13 +75,13 @@ function Pedido() {
           console.error('Error al agregar detalles al pedido existente:', response.statusText);
         }
       } else {
-        const nuevoPedidoResponse = await fetch('http://localhost:3006/pedidos/', {
+        const nuevoPedidoResponse = await fetch('http://localhost:4000/pedidos/', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            idMesas: idMesas,
+            tipo: idMesas,
             detalle: detallesPedido,
           }),
         });
@@ -102,8 +102,9 @@ function Pedido() {
   
   
   const handlePagarClick = () => {
+    const id=idPedido;
     try {
-      fetch(`http://localhost:3006/pedidos/${idPedido}`, {
+      fetch(`http://localhost:4000/pedidos/${id}`, {
         method: 'PATCH',
       })
         .then(response => {
@@ -123,7 +124,7 @@ function Pedido() {
   
   const obtenerDetallesPedido = async (idPedido) => {
     try {
-      const detallesResponse = await fetch(`http://localhost:3006/detalles/${idPedido}`);
+      const detallesResponse = await fetch(`http://localhost:4000/detalles/${idPedido}`);
       if (detallesResponse.ok) {
         const detallesData = await detallesResponse.json();
         console.log('Detalles obtenidos correctamente:', detallesData);
@@ -143,12 +144,12 @@ function Pedido() {
   
     return detallesArray.map((detalle, index) => (
       <div key={index} className={styles.detalle}>
-        <p>Producto: {detalle.nombreProducto} Cantidad: {detalle.cantidad} Precio:$ {detalle.precio}</p>
+        <p>Producto: {detalle.nombre_producto} Cantidad: {detalle.cantidad} Precio:$ {detalle.precio}</p>
         {detalle.extra && detalle.extra.length > 0 && (
           <div className={styles.extraContainer}>
             {detalle.extra.map((extra, i) => (
               <p key={i}>
-                {extra.nombreExtra} Cantidad: {extra.cantidad} Precio:$ {extra.precio}
+                {extra.nombre_extra} Cantidad: {extra.cantidad} Precio:$ {extra.precio}
               </p>
             ))}
           </div>
@@ -180,11 +181,11 @@ function Pedido() {
   const renderDetalles = () => {
     return detalles.map((detalle, index) => (
       <div key={index} className={styles.detalle}>
-        <p className={styles.agregar}>Producto: {productosNombres[detalle.idProducto]} Cantidad: {detalle.cantidad} Precio:$ {detalle.precio}</p>
+        <p className={styles.agregar}>Producto: {productosNombres[detalle.id_producto]} Cantidad: {detalle.cantidad} Precio:$ {detalle.precio}</p>
         {detalle.extra && detalle.extra.length > 0 && (
           <div className={styles.extraContainer}>
             {detalle.extra.map((extra, i) => (
-              <p className={styles.agregar} key={i}>{extrasNombres[extra.idProducto]} Cantidad: {extra.cantidad} Precio:$ {extra.precio} </p>
+              <p className={styles.agregar} key={i}>{extrasNombres[extra.id_producto]} Cantidad: {extra.cantidad} Precio:$ {extra.precio} </p>
             ))}
           </div>
         )}

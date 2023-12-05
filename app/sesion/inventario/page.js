@@ -45,7 +45,7 @@ export default function Home() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:3006/productos");
+        const response = await axios.get("http://localhost:4000/productos/");
 
         setProductos(response.data.data);
       } catch (error) {
@@ -73,14 +73,14 @@ export default function Home() {
       <div className={styles.container}>
         {productos.map((producto) => {
     const isBebida = producto.tipo === "Bebida" && categoriaSeleccionada === "Bebidas";
-    const isTaco = producto.tipo === "Taco" && categoriaSeleccionada === "Tacos";
-    const isQuesadilla = producto.tipo === "Quesadilla" && categoriaSeleccionada === "Quesadillas";
+    const isTaco = producto.tipo === "Tacos" && categoriaSeleccionada === "Tacos";
+    const isQuesadilla = producto.tipo === "Quesadillas" && categoriaSeleccionada === "Quesadillas";
 
     if (isBebida || isTaco || isQuesadilla) {
       return (
         <Link
-          key={producto.idProducto}
-          href={`/sesion/inventario/producto/${producto.idProducto}`}
+          key={producto.id}
+          href={`/sesion/inventario/producto/${producto.id}`}
         >
           <div className={styles.card}>
             <Image
