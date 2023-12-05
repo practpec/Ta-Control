@@ -13,7 +13,7 @@ export default function Home() {
   useEffect(() => {
     const getProducto = async () => {
       try {
-        const res = await axios.get(`http://localhost:4000/productos/${id}`);
+        const res = await axios.get(`http://ec2-54-205-202-188.compute-1.amazonaws.com/productos/${id}`);
         console.log(res.data);
 
         setProducto({
@@ -37,7 +37,7 @@ export default function Home() {
   async function deleteProducto(e) {
     e.preventDefault();
     try {
-      const res = await axios.patch(`http://localhost:4000/productos/eliminar/${id}`);
+      const res = await axios.patch(`http://ec2-54-205-202-188.compute-1.amazonaws.com/productos/eliminar/${id}`);
       if (res.status === 200) {
         alert('Producto eliminado, disponible en papelera');
       } else {

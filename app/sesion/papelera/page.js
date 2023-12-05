@@ -8,7 +8,7 @@ export default function Papelera() {
   const [productos, setProductos] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:4000/productos/deleted/')
+    fetch('http://ec2-54-205-202-188.compute-1.amazonaws.com/productos/deleted/')
       .then(response => response.json())
       .then(data => setProductos(data.data))
       .catch(error => console.error('Error fetching data:', error));
@@ -16,7 +16,7 @@ export default function Papelera() {
 
   const opcionEliminar = async (id) => {
     try {
-      const response = await fetch(`http://localhost:4000/productos/${id}`, {
+      const response = await fetch(`http://ec2-54-205-202-188.compute-1.amazonaws.com/productos/${id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -35,7 +35,7 @@ export default function Papelera() {
 
   const opcionRecuperar = async (id) => {
     try {
-      const response = await fetch(`http://localhost:4000/productos/${id}`, {
+      const response = await fetch(`http://ec2-54-205-202-188.compute-1.amazonaws.com/productos/${id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',

@@ -9,7 +9,7 @@ const Tabla = () => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch(`http://localhost:4000/detalles/?page=1&limit=10&sortField=id_producto&sortOrder=desc`);
+      const response = await fetch(`http://ec2-54-205-202-188.compute-1.amazonaws.com/detalles/?page=1&limit=10&sortField=id_producto&sortOrder=desc`);
       const data = await response.json();
       console.log('Data from API:', data);
       setReporte(data.data);

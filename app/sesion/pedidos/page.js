@@ -16,7 +16,7 @@ export default function Home() {
     localStorage.removeItem('comparar');
     localStorage.removeItem('detalle');
 
-    fetch('http://localhost:4000/pedidos/')
+    fetch('http://ec2-54-205-202-188.compute-1.amazonaws.com/pedidos/')
       .then((response) => response.json())
       .then((data) => setPedidos(data.data))
       .catch((error) => console.error('Error fetching data:', error));

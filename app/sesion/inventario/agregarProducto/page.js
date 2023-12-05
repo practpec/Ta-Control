@@ -33,7 +33,7 @@ export default function Home() {
       formData.append("bebidas", selectedImage);
 
       try {
-        const response = await axios.post("http://localhost:4000/productos/", formData);
+        const response = await axios.post("http://ec2-54-205-202-188.compute-1.amazonaws.com/productos/", formData);
 
         if (response.status === 201) {
           Swal.fire({

@@ -13,7 +13,7 @@ export default function ModificarProducto() {
   useEffect(() => {
     const getProducto = async () => {
       try {
-        const res = await axios.get(`http://localhost:4000/productos/${id}`);
+        const res = await axios.get(`http://ec2-54-205-202-188.compute-1.amazonaws.com/productos/${id}`);
         const firstProduct = res.data.data[0] ?? {};
 
         setProducto({
@@ -41,7 +41,7 @@ export default function ModificarProducto() {
 
   const handleSubmit = async () => {
     try {
-      const response = await axios.patch(`http://localhost:4000/productos/producto/${id}`, producto);
+      const response = await axios.patch(`http://ec2-54-205-202-188.compute-1.amazonaws.com/productos/producto/${id}`, producto);
       console.log(response);
       if (response.status === 200) {
         alert('Se actualizó el producto correctamente');

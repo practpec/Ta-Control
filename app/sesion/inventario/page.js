@@ -45,7 +45,7 @@ export default function Home() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/productos/");
+        const response = await axios.get("http://ec2-54-205-202-188.compute-1.amazonaws.com/productos/");
 
         setProductos(response.data.data);
       } catch (error) {

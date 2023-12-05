@@ -12,7 +12,7 @@ export default function Home() {
   const [ambos, setAmbos] = useState(0);
 
   useEffect(() => {
-    fetch('http://localhost:4000/productos/')
+    fetch('http://ec2-54-205-202-188.compute-1.amazonaws.com/productos/')
       .then(response => response.json())
       .then(data => setProductos(data.data))
       .catch(error => console.error('Error fetching data:', error));

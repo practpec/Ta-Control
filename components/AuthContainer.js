@@ -13,7 +13,7 @@ function ProtectedRoute({ children }) {
 
     if (token) { 
       axios
-        .get('https://server-nota.vercel.app/api/usuarios/verificacion', {
+        .get('http://ec2-54-205-202-188.compute-1.amazonaws.com/api/usuarios/verificacion', {
           headers: {
             Authorization: token, 
           },

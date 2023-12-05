@@ -16,7 +16,7 @@ export default function Eliminar(){
         useEffect(() => {
             const getProducto = async () => {
               console.log(id);
-              const res = await axios.get("http://localhost:3006/productos" + id,);
+              const res = await axios.get("http://ec2-54-205-202-188.compute-1.amazonaws.com/productos" + id,);
               console.log(res.data.data); 
         
               setProducto({
@@ -30,7 +30,7 @@ export default function Eliminar(){
 
       const updateProducto = async(e) =>{
         e.preventDefult();
-        const res = await axios.update("http://localhost:3006/productos" + id,);
+        const res = await axios.update("http://ec2-54-205-202-188.compute-1.amazonaws.com/productos" + id,);
         if (res.status == 200) {
           alert("Producto recuperado");
       } else {
@@ -38,7 +38,7 @@ export default function Eliminar(){
       }
       };
       const handleSubmit = async (e)=> {
-        const response = await axios.patch("http://localhost:3006/productos" + id, producto);
+        const response = await axios.patch("http://ec2-54-205-202-188.compute-1.amazonaws.com/productos" + id, producto);
         if(response.status === 200){
           alert("Se actualizó el producto correctamente");
         } else {

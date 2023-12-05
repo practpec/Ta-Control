@@ -35,7 +35,7 @@ export default function Home() {
     }
 
     try {
-      const response = await axios.post("http://localhost:4000/auth/login", {
+      const response = await axios.post("http://ec2-54-205-202-188.compute-1.amazonaws.com/auth/login", {
         email,
         password,
       });

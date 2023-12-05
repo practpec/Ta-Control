@@ -60,7 +60,7 @@ function Pedido() {
   
 
       if (storedIdPedido) {
-        const response = await fetch('http://localhost:4000/detalles/', {
+        const response = await fetch('http://ec2-54-205-202-188.compute-1.amazonaws.com/detalles/', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -75,7 +75,7 @@ function Pedido() {
           console.error('Error al agregar detalles al pedido existente:', response.statusText);
         }
       } else {
-        const nuevoPedidoResponse = await fetch('http://localhost:4000/pedidos/', {
+        const nuevoPedidoResponse = await fetch('http://ec2-54-205-202-188.compute-1.amazonaws.com/pedidos/', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -104,7 +104,7 @@ function Pedido() {
   const handlePagarClick = () => {
     const id=idPedido;
     try {
-      fetch(`http://localhost:4000/pedidos/${id}`, {
+      fetch(`http://ec2-54-205-202-188.compute-1.amazonaws.com/pedidos/${id}`, {
         method: 'PATCH',
       })
         .then(response => {
@@ -124,7 +124,7 @@ function Pedido() {
   
   const obtenerDetallesPedido = async (idPedido) => {
     try {
-      const detallesResponse = await fetch(`http://localhost:4000/detalles/${idPedido}`);
+      const detallesResponse = await fetch(`http://ec2-54-205-202-188.compute-1.amazonaws.com/detalles/${idPedido}`);
       if (detallesResponse.ok) {
         const detallesData = await detallesResponse.json();
         console.log('Detalles obtenidos correctamente:', detallesData);
