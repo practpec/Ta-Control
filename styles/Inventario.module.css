@@ -41,6 +41,17 @@
     color: #F28705;
     border: 5px solid #F28705;
 }
+
+#selectA{
+  display: flex;
+  border: 2px solid white;
+  border-radius: 8px;
+  font-weight: 600;
+  padding: 2%;
+}
+#selectA:focus{
+  border:none;
+}
 .tituloTabla{
   display: flex;
   justify-content: center;
